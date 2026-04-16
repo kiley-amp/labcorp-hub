@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Labcorp × Amplitude — Partnership Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0e1a;
+      --surface: #131828;
+      --surface2: #1b2035;
+      --border: #242b45;
+      --accent: #5b6af0;
+      --accent2: #38d9a9;
+      --text: #e8eaf6;
+      --muted: #7b84aa;
+      --green: #38d9a9;
+      --yellow: #f7c55a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent2); text-decoration: underline; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,14,26,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 32px;
+      height: 48px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .nav a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav a:hover {
+      color: var(--text);
+      background: var(--surface2);
+      text-decoration: none;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    section { padding: 56px 0 0; }
+    section:first-of-type { padding-top: 48px; }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .section-emoji { font-size: 20px; }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, var(--surface) 0%, #16203a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 32px 36px;
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .logo-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--white);
+    }
+    .logo-labcorp { background: linear-gradient(135deg, #004b87, #0072ce); }
+    .logo-amp { background: linear-gradient(135deg, #5b6af0, #9b4ef7); }
+    .header-x {
+      color: var(--muted);
+      font-size: 28px;
+      font-weight: 300;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .header .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .pill.green { border-color: var(--green); color: var(--green); background: rgba(56,217,169,0.08); }
+    .pill.blue { border-color: var(--accent); color: var(--accent); background: rgba(91,106,240,0.08); }
+    .pill.yellow { border-color: var(--yellow); color: var(--yellow); background: rgba(247,197,90,0.08); }
+
+    /* ── GRID ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── WIN CARDS ── */
+    .win-card {
+      background: var(--surface);
+      border: 1px solid rgba(56,217,169,0.3);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .win-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+    .win-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .win-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── GOALS ── */
+    .goal-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .goal-row:last-child { margin-bottom: 0; }
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .goal-name { font-size: 14px; font-weight: 600; color: var(--white); }
+    .goal-status { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+    .status-live { background: rgba(56,217,169,0.12); color: var(--green); border: 1px solid rgba(56,217,169,0.3); }
+    .status-progress { background: rgba(91,106,240,0.12); color: var(--accent); border: 1px solid rgba(91,106,240,0.3); }
+    .status-planning { background: rgba(247,197,90,0.12); color: var(--yellow); border: 1px solid rgba(247,197,90,0.3); }
+    .status-exploring { background: rgba(123,132,170,0.12); color: var(--muted); border: 1px solid rgba(123,132,170,0.3); }
+    .progress-bar {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .goal-desc { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    /* ── INTEGRATIONS ── */
+    .integration-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .integration-row:last-child { margin-bottom: 0; }
+    .integration-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .integration-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* ── INITIATIVES ── */
+    .initiative-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .initiative-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .initiative-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .initiative-body { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 6px; }
+
+    /* ── CALENDAR ── */
+    .cal-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .cal-row:last-child { margin-bottom: 0; }
+    .cal-date-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 52px;
+      min-width: 52px;
+      text-align: center;
+      padding: 8px 4px;
+    }
+    .cal-month { font-size: 10px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.5px; }
+    .cal-day { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1.1; }
+    .cal-content { flex: 1; }
+    .cal-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .cal-desc { font-size: 12px; color: var(--muted); }
+    .cal-link { font-size: 12px; color: var(--accent); margin-top: 4px; display: inline-block; }
+
+    /* ── SESSIONS ── */
+    .session-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .session-row:last-child { margin-bottom: 0; }
+    .session-date-box {
+      background: var(--surface2);
+      border-radius: 6px;
+      text-align: center;
+      padding: 4px 8px;
+      min-width: 44px;
+    }
+    .session-month { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .session-day { font-size: 18px; font-weight: 800; color: var(--white); line-height: 1.1; }
+    .session-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+    .session-desc { font-size: 12px; color: var(--muted); }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .team-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+    .person-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .person-card:last-child { margin-bottom: 0; }
+    .person-avatar {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--white);
+    }
+    .avatar-blue { background: linear-gradient(135deg, #004b87, #0072ce); }
+    .avatar-purple { background: linear-gradient(135deg, #5b6af0, #9b4ef7); }
+    .avatar-teal { background: linear-gradient(135deg, #1c9e7e, #38d9a9); }
+    .avatar-orange { background: linear-gradient(135deg, #e07b39, #f7c55a); }
+    .person-info { flex: 1; min-width: 0; }
+    .person-name { font-size: 13px; font-weight: 700; color: var(--white); }
+    .person-title { font-size: 12px; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .person-email { font-size: 11px; color: var(--accent); margin-top: 2px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ── RESOURCES ── */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .resource-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .resource-card:hover { border-color: var(--accent); }
+    .resource-icon { font-size: 20px; }
+    .resource-label { font-size: 13px; font-weight: 600; color: var(--white); }
+    .resource-desc { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+    /* ── WHATS NEW ── */
+    .whats-new-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .whats-new-tag {
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(91,106,240,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(91,106,240,0.3);
+      border-radius: 10px;
+      padding: 2px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .whats-new-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .whats-new-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── DIVIDER ── */
+    .zone-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0 0;
+    }
+    .zone-label {
+      text-align: center;
+      margin-top: -14px;
+    }
+    .zone-label span {
+      background: var(--bg);
+      padding: 0 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+      .header { padding: 28px 20px 24px; }
+      .container { padding: 0 20px 60px; }
+      .nav { padding: 0 20px; }
+    }
+    @media (max-width: 700px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-logos">
+      <div class="logo-box logo-labcorp">LC</div>
+      <div class="header-x">×</div>
+      <div class="logo-box logo-amp">A</div>
+    </div>
+    <h1>Labcorp × Amplitude — Partnership Hub</h1>
+    <p class="subtitle">
+      Helping the Labcorp Genetics (Invitae) team turn behavioral data into faster, smarter product decisions — from patient app instrumentation to in-product guidance at scale.
+    </p>
+    <div class="pills">
+      <span class="pill green">✓ Active Partnership</span>
+      <span class="pill blue">Amplitude Analytics</span>
+      <span class="pill blue">Guides &amp; Surveys</span>
+      <span class="pill">Customer since 2022</span>
+      <span class="pill">Medical Genetics · San Francisco</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav">
+  <a href="#goals">Goals</a>
+  <a href="#integrations">Integrations</a>
+  <a href="#wins">Wins</a>
+  <a href="#initiatives">Initiatives</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#sessions">Sessions</a>
+  <a href="#whats-new">What's New</a>
+  <a href="#team">Team</a>
+  <a href="#resources">Resources</a>
+</nav>
+
+<div class="container">
+
+  <!-- ═══════════════════ TOP HALF — EXEC FACING ═══════════════════ -->
+
+  <!-- GOALS -->
+  <section id="goals">
+    <h2><span class="section-emoji">🎯</span> Progress Toward Goals</h2>
+
+    <div class="goal-row">
+      <div class="goal-header">
+        <span class="goal-name">Monthly Sync Cadence Established</span>
+        <span class="goal-status status-live">Active ✓</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+      <div class="goal-desc">Recurring monthly session locked in with Anish and Em on the last Tuesday of each month. April session expanded to a full QBR format.</div>
+    </div>
+
+    <div class="goal-row">
+      <div class="goal-header">
+        <span class="goal-name">Guides &amp; Surveys Instrumentation</span>
+        <span class="goal-status status-progress">In Progress</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+      <div class="goal-desc">SDK is live on the production environment. In-product guide delivery is active. Resolving a data pipeline issue so interaction events flow into Amplitude Insights.</div>
+    </div>
+
+    <div class="goal-row">
+      <div class="goal-header">
+        <span class="goal-name">SSO Migration (Google Auth → Okta)</span>
+        <span class="goal-status status-progress">In Progress</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+      <div class="goal-desc">Internal approvals in process. Completion unlocks seamless user onboarding across the organization and sets the stage for broader Amplitude adoption.</div>
+    </div>
+
+    <div class="goal-row">
+      <div class="goal-header">
+        <span class="goal-name">Data Taxonomy Cleanup</span>
+        <span class="goal-status status-planning">Planning</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
+      <div class="goal-desc">Full audit complete across 4 production projects. Identifying duplicate events, stale properties, and missing descriptions to create a clean, self-serve-ready taxonomy.</div>
+    </div>
+
+    <div class="goal-row">
+      <div class="goal-header">
+        <span class="goal-name">Organization-Wide Analytics Adoption</span>
+        <span class="goal-status status-exploring">Exploring</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+      <div class="goal-desc">Media team is actively self-serving today. Post-SSO migration opens the path to onboarding additional product, engineering, and clinical teams into Amplitude workflows.</div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section id="integrations">
+    <h2><span class="section-emoji">🔌</span> Active Integrations</h2>
+
+    <div class="integration-row">
+      <div class="integration-name">
+        <div class="integration-icon">📊</div>
+        Amplitude Analytics
+      </div>
+      <span class="goal-status status-live">Active ✓</span>
+    </div>
+
+    <div class="integration-row">
+      <div class="integration-name">
+        <div class="integration-icon">💬</div>
+        Guides &amp; Surveys
+      </div>
+      <span class="goal-status status-progress">In Progress — Data Fix</span>
+    </div>
+
+    <div class="integration-row">
+      <div class="integration-name">
+        <div class="integration-icon">🔐</div>
+        SSO / Okta
+      </div>
+      <span class="goal-status status-progress">In Progress — Migration</span>
+    </div>
+
+    <div class="integration-row">
+      <div class="integration-name">
+        <div class="integration-icon">🤖</div>
+        Amplitude AI (Ask Amplitude, Agents)
+      </div>
+      <span class="goal-status status-exploring">Exploring — QBR Agenda</span>
+    </div>
+  </section>
+
+  <!-- WINS -->
+  <section id="wins">
+    <h2><span class="section-emoji">🏆</span> Shared Wins</h2>
+    <div class="grid-3">
+
+      <div class="win-card">
+        <span class="win-icon">⚙️</span>
+        <div class="win-title">G&amp;S SDK Live on Production</div>
+        <div class="win-body">Guides &amp; Surveys is successfully instrumented on the production environment across web platforms — a critical milestone that enables in-product user guidance and feedback collection at scale.</div>
+      </div>
+
+      <div class="win-card">
+        <span class="win-icon">🗂️</span>
+        <div class="win-title">Full Data Taxonomy Audit Delivered</div>
+        <div class="win-body">Amplitude completed a comprehensive audit covering Patient App, Invitae Production, Clear Production, and Citizen-Prod — surfacing duplicates, stale events, and naming inconsistencies with a clear cleanup roadmap.</div>
+      </div>
+
+      <div class="win-card">
+        <span class="win-icon">🤝</span>
+        <div class="win-title">Consistent Monthly Cadence Running</div>
+        <div class="win-body">A steady monthly partnership rhythm is in place with Anish and Em. This foundation of regular touchpoints is what turns platform investment into measurable outcomes.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═════════════════ DIVIDER — BUSINESS REVIEW BACKBONE ═════════════════ -->
+  <hr class="zone-divider" />
+  <div class="zone-label"><span>Business Review Backbone</span></div>
+
+  <!-- INITIATIVES -->
+  <section id="initiatives">
+    <h2><span class="section-emoji">🚀</span> Active Initiatives</h2>
+    <div class="grid-2">
+
+      <div class="initiative-card">
+        <span class="initiative-icon">🔐</span>
+        <div class="initiative-title">
+          SSO Migration
+          <span class="goal-status status-progress">In Progress</span>
+        </div>
+        <div class="initiative-body">Migrating authentication from Google Auth to Okta. This is the single highest-leverage infrastructure move on the roadmap — once complete, it removes the login friction that's blocking broader team adoption and enables Amplitude to scale across product, data, and clinical functions.</div>
+        <!-- TODO: Add shareable doc or tracking link once available -->
+      </div>
+
+      <div class="initiative-card">
+        <span class="initiative-icon">💬</span>
+        <div class="initiative-title">
+          Guides &amp; Surveys Data Fix
+          <span class="goal-status status-progress">In Progress</span>
+        </div>
+        <div class="initiative-body">Guides are live and appearing on the website, but interaction data isn't flowing into Amplitude Insights. The SDK instrumentation checks out on production — root cause is likely an SDK/GTM configuration issue. Amplitude engineering is engaged to resolve. Once fixed, the team will have a full feedback loop from guide delivery to interaction analytics.</div>
+        <!-- TODO: Add link to support ticket or resolution doc once closed -->
+      </div>
+
+      <div class="initiative-card">
+        <span class="initiative-icon">🗂️</span>
+        <div class="initiative-title">
+          Taxonomy &amp; Data Cleanup
+          <span class="goal-status status-planning">Planning</span>
+        </div>
+        <div class="initiative-body">A full data audit across all four production projects is complete. Next step: a working session to systematically purge stale events, merge duplicates, add missing descriptions, and establish naming conventions. This cleanup is foundational to self-serve adoption — teams can't trust data they can't interpret.</div>
+        <!-- TODO: Add link to agenda doc for taxonomy working session once scheduled -->
+      </div>
+
+      <div class="initiative-card">
+        <span class="initiative-icon">📈</span>
+        <div class="initiative-title">
+          Post-SSO Adoption Expansion
+          <span class="goal-status status-exploring">Exploring</span>
+        </div>
+        <div class="initiative-body">Today, the media team self-serves in Amplitude. Once SSO is live and taxonomy is clean, the path opens to onboard product managers, clinical program teams, and data analysts who currently route around the platform. The vision: Amplitude as the default analytics layer across Labcorp Genetics — not just a tool for one team.</div>
+      </div>
+
+      <div class="initiative-card">
+        <span class="initiative-icon">🤖</span>
+        <div class="initiative-title">
+          AI Capabilities Exploration
+          <span class="goal-status status-exploring">Exploring — April 28 QBR</span>
+        </div>
+        <div class="initiative-body">Amplitude's AI features — Ask Amplitude (natural language queries), Dashboard Agents, and Slack AI digest integration — are on the April 28 QBR agenda. The goal: show the Labcorp team how to get answers from their data without writing a single query, and identify 1–2 use cases to activate immediately post-SSO.</div>
+      </div>
+
+      <div class="initiative-card">
+        <span class="initiative-icon">🧬</span>
+        <div class="initiative-title">
+          Labcorp Enterprise Footprint
+          <span class="goal-status status-exploring">Exploring</span>
+        </div>
+        <div class="initiative-body">The current relationship is rooted in Invitae, which was acquired by Labcorp in 2024. As the partnership matures, there's a strategic opportunity to expand Amplitude's footprint into the broader Labcorp enterprise — starting with the genetics business unit as a reference point for what's possible.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section id="calendar">
+    <h2><span class="section-emoji">📅</span> Upcoming Calendar</h2>
+
+    <div class="cal-row">
+      <div class="cal-date-box">
+        <div class="cal-month">Apr</div>
+        <div class="cal-day">21</div>
+      </div>
+      <div class="cal-content">
+        <div class="cal-title">NYC Office Week — Team in Manhattan</div>
+        <div class="cal-desc">Kiley, Adam, and Leah will be in New York the week of April 21. Potential in-person coffee with Anish Raman if schedules align.</div>
+        <!-- TODO: Add agenda or coffee details once confirmed -->
+      </div>
+    </div>
+
+    <div class="cal-row">
+      <div class="cal-date-box">
+        <div class="cal-month">Apr</div>
+        <div class="cal-day">28</div>
+      </div>
+      <div class="cal-content">
+        <div class="cal-title">Q2 Business Review (QBR) — Expanded Session</div>
+        <div class="cal-desc">45–50 minute QBR covering: Partnership at a Glance, 2026 Priorities from the Labcorp team, and Art of the Possible (AI demo + roadmap). Anish is bringing additional product stakeholders.</div>
+        <!-- TODO: Add shareable agenda doc link once created -->
+        <span class="cal-link">📎 Agenda doc — TODO: add link before session</span>
+      </div>
+    </div>
+
+    <div class="cal-row">
+      <div class="cal-date-box">
+        <div class="cal-month">Apr</div>
+        <div class="cal-day">30</div>
+      </div>
+      <div class="cal-content">
+        <div class="cal-title">Renewal Signing Deadline</div>
+        <div class="cal-desc">Revised renewal quote (12-month term) confirmed by Anish on April 6. Internal approvals in progress — DocuSign recipient to be confirmed.</div>
+      </div>
+    </div>
+
+    <div class="cal-row">
+      <div class="cal-date-box">
+        <div class="cal-month">May</div>
+        <div class="cal-day">~27</div>
+      </div>
+      <div class="cal-content">
+        <div class="cal-title">Monthly Sync — Last Tuesday</div>
+        <div class="cal-desc">Recurring monthly session, 3:00–3:25pm CT, last Tuesday of each month. Post-QBR follow-up on SSO status, G&S resolution, and taxonomy working session scheduling.</div>
+        <!-- TODO: Add shared agenda doc link if created -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SESSIONS -->
+  <section id="sessions">
+    <h2><span class="section-emoji">📄</span> Recent Sessions</h2>
+
+    <div class="session-row">
+      <div class="session-date-box">
+        <div class="session-month">Apr</div>
+        <div class="session-day">14</div>
+      </div>
+      <div>
+        <div class="session-title">QBR Pre-Work Email Sent</div>
+        <div class="session-desc">Kiley sent QBR prep email to Anish and Em requesting 3 key 2026 initiatives/challenges, plus an invite for in-person coffee in NYC (week of Apr 21).</div>
+        <!-- TODO: Add link to shareable session notes doc once created -->
+      </div>
+    </div>
+
+    <div class="session-row">
+      <div class="session-date-box">
+        <div class="session-month">Apr</div>
+        <div class="session-day">02</div>
+      </div>
+      <div>
+        <div class="session-title">Monthly Sync — April (Next Steps Recap)</div>
+        <div class="session-desc">Confirmed April 28 EBR format, SSO timeline, G&S fix path, taxonomy working session proposal, and renewal pricing discussion. Adam, Leah, Kiley attending NYC in-person.</div>
+        <!-- TODO: Add shareable Google Doc recap link if one exists -->
+      </div>
+    </div>
+
+    <div class="session-row">
+      <div class="session-date-box">
+        <div class="session-month">Mar</div>
+        <div class="session-day">24</div>
+      </div>
+      <div>
+        <div class="session-title">Renewal Order Form Sent + AE Introduction</div>
+        <div class="session-desc">Adam Yapkowitz introduced Leah McGhee as new AE and sent updated renewal order form. Anish confirmed receipt and began internal processing.</div>
+      </div>
+    </div>
+
+    <div class="session-row">
+      <div class="session-date-box">
+        <div class="session-month">Feb</div>
+        <div class="session-day">27</div>
+      </div>
+      <div>
+        <div class="session-title">Monthly Sync — February</div>
+        <div class="session-desc">Followed up on G&S support ticket (auto-closed), data cleanup plan, and SSO timeline. SDK instrumentation confirmed solid on production.</div>
+      </div>
+    </div>
+
+    <div class="session-row">
+      <div class="session-date-box">
+        <div class="session-month">Feb</div>
+        <div class="session-day">18</div>
+      </div>
+      <div>
+        <div class="session-title">Pre-Meeting Agenda: Feb 24 Monthly Sync</div>
+        <div class="session-desc">Sent proposed agenda covering SSO status, G&S rollout, taxonomy audit review, and data cleanup working session setup. Taxonomy audit zip shared with Anish and Em.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WHAT'S NEW -->
+  <section id="whats-new">
+    <h2><span class="section-emoji">✨</span> What's New at Amplitude</h2>
+    <!-- NOTE: Verify all links below before sharing with customer -->
+    <div class="grid-2">
+
+      <div class="whats-new-card">
+        <div class="whats-new-tag">AI · Ask Amplitude</div>
+        <div class="whats-new-title">Natural Language Analytics — Ask Amplitude</div>
+        <div class="whats-new-body">Ask questions about your data in plain English and get instant chart answers — no query-building required. Perfect for the taxonomy-cleanup phase: even imperfect data becomes queryable. <a href="https://amplitude.com/docs" target="_blank">See docs →</a></div>
+      </div>
+
+      <div class="whats-new-card">
+        <div class="whats-new-tag">AI · Agents</div>
+        <div class="whats-new-title">Dashboard Agents — Automated Weekly Insights</div>
+        <div class="whats-new-body">Set up an agent on any dashboard and get a weekly AI digest surfacing what changed and why — directly to Slack or email. Enables self-serve insight delivery to stakeholders who aren't in Amplitude daily. <a href="https://amplitude.com/docs" target="_blank">See docs →</a></div>
+      </div>
+
+      <div class="whats-new-card">
+        <div class="whats-new-tag">Guides &amp; Surveys</div>
+        <div class="whats-new-title">G&S Insights &amp; Targeting Improvements</div>
+        <div class="whats-new-body">New G&S features include improved targeting rules, audience cohort integration, and enhanced insights views — making it easier to show the business impact of in-product guides once the data pipeline is resolved. <a href="https://amplitude.com/docs" target="_blank">See docs →</a></div>
+      </div>
+
+      <div class="whats-new-card">
+        <div class="whats-new-tag">Governance</div>
+        <div class="whats-new-title">Audit Logs — Full Org Activity Visibility</div>
+        <div class="whats-new-body">Organization admins can now view a comprehensive audit log of all actions taken across the Amplitude org — authentication events, user management, project changes, and RBAC updates. Relevant for Labcorp's SSO migration and post-migration governance. <a href="https://amplitude.com/docs/admin/audit-log" target="_blank">See docs →</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <h2><span class="section-emoji">👥</span> Team</h2>
+    <div class="team-grid">
+
+      <div>
+        <div class="team-section-title">Their Team — Labcorp</div>
+
+        <div class="person-card">
+          <div class="person-avatar avatar-blue">AR</div>
+          <div class="person-info">
+            <div class="person-name">Anish Raman</div>
+            <div class="person-title">Data Scientist, Customer Experience</div>
+            <a class="person-email" href="mailto:anish.raman@labcorp.com">anish.raman@labcorp.com</a>
+          </div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-avatar avatar-teal">EL</div>
+          <div class="person-info">
+            <div class="person-name">Em Lin</div>
+            <div class="person-title">Product Manager, CX Patients &amp; Providers</div>
+            <a class="person-email" href="mailto:em.lin@labcorp.com">em.lin@labcorp.com</a>
+          </div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-avatar" style="background: var(--surface2); color: var(--muted); font-size: 18px;">+</div>
+          <div class="person-info">
+            <div class="person-name">Additional Stakeholders — TBD</div>
+            <div class="person-title">Anish is inviting product team members to the April 28 QBR</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="team-section-title">Your Amplitude Team</div>
+
+        <div class="person-card">
+          <div class="person-avatar avatar-purple">KS</div>
+          <div class="person-info">
+            <div class="person-name">Kiley Sheehy</div>
+            <div class="person-title">Senior Technical Success Manager</div>
+            <a class="person-email" href="mailto:kiley.sheehy@amplitude.com">kiley.sheehy@amplitude.com</a>
+          </div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-avatar avatar-orange">AY</div>
+          <div class="person-info">
+            <div class="person-name">Adam Yapkowitz</div>
+            <div class="person-title">Area Vice President, Southeast</div>
+            <a class="person-email" href="mailto:adam.yapkowitz@amplitude.com">adam.yapkowitz@amplitude.com</a>
+          </div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-avatar" style="background: linear-gradient(135deg, #38a169, #68d391);">LM</div>
+          <div class="person-info">
+            <div class="person-name">Leah McGhee</div>
+            <div class="person-title">Account Executive</div>
+            <a class="person-email" href="mailto:leah.mcghee@amplitude.com">leah.mcghee@amplitude.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <h2><span class="section-emoji">🔗</span> Resources</h2>
+    <div class="resources-grid">
+
+      <a class="resource-card" href="slack://channel?id=C0ACYFNJL8Y" target="_blank">
+        <span class="resource-icon">💬</span>
+        <div>
+          <div class="resource-label">Slack Channel</div>
+          <div class="resource-desc">#labcorp-genetics-inc</div>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://app.amplitude.com/analytics/invitae/" target="_blank">
+        <span class="resource-icon">📊</span>
+        <div>
+          <div class="resource-label">Open in Amplitude</div>
+          <div class="resource-desc">Invitae / Labcorp org</div>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://gethelp.amplitude.com/hc/en-us?siteLocation=nav" target="_blank">
+        <span class="resource-icon">🆘</span>
+        <div>
+          <div class="resource-label">Help Center</div>
+          <div class="resource-desc">Articles &amp; guides</div>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://gethelp.amplitude.com/hc/en-us/requests/new" target="_blank">
+        <span class="resource-icon">🎟️</span>
+        <div>
+          <div class="resource-label">File a Support Ticket</div>
+          <div class="resource-desc">Get engineering help</div>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://amplitude.com/docs" target="_blank">
+        <span class="resource-icon">📚</span>
+        <div>
+          <div class="resource-label">Amplitude Docs</div>
+          <div class="resource-desc">Product documentation</div>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://amplitude.lightning.force.com/lightning/r/Account/0010a00001AUOSzAAP/view" target="_blank">
+        <span class="resource-icon">☁️</span>
+        <div>
+          <div class="resource-label">Salesforce Account</div>
+          <div class="resource-desc">Labcorp Genetics Inc.</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+</body>
+</html>
